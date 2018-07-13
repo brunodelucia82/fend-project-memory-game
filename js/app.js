@@ -28,6 +28,13 @@ function shuffle(array) {
 }
 
 let faceUpCards = [];
+let moves = 0;
+
+function incrementMoves() {
+	moves++;
+	let span = document.querySelector(".moves");
+	span.textContent = moves;
+}
 
 deck.addEventListener("click", function(ev) {
 	let card = ev.target.closest("li"); // the card that was clicked
@@ -35,7 +42,6 @@ deck.addEventListener("click", function(ev) {
 	if (faceUpCards.length < 2 && !card.classList.contains("open") && !card.classList.contains("show") && !card.classList.contains("match")) {
 		turnFaceUp(card);
 		if (faceUpCards.length === 2) match(faceUpCards[0], faceUpCards[1]);
-		
 	}
 })
 
@@ -49,6 +55,7 @@ function turnFaceDown(card) {
 }
 
 function match(card1, card2) {
+	incrementMoves();
 	if (card1.innerHTML === card2.innerHTML) {
 		addMatch(card1);
 		addMatch(card2);
@@ -61,7 +68,7 @@ function match(card1, card2) {
 				turnFaceDown(card);
 			}
 		}
-	}, 1500);
+	}, 1000);
 }
 
 function addMatch(card) {
