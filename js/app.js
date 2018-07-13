@@ -29,7 +29,9 @@ let shuffledCardsArray = shuffle(cardsArray);
 
 (function appendShuffledCards(){
     deck.classList.add("hidden");
-    deck.innerHTML = "";
+    while (deck.firstChild) {
+        deck.removeChild(deck.firstChild);
+    }
     for (let i = 0; i < shuffledCardsArray.length; i++) {
         deck.appendChild(shuffledCardsArray[i]);
     }
