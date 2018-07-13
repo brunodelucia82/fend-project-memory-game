@@ -40,49 +40,49 @@ let faceUpCards = [];
 let moves = 0;
 
 function incrementMoves() {
-	moves++;
-	let span = document.querySelector(".moves");
-	span.textContent = moves;
+    moves++;
+    let span = document.querySelector(".moves");
+    span.textContent = moves;
 }
 
 deck.addEventListener("click", function(ev) {
-	let card = ev.target.closest("li"); // the card that was clicked
-	// if either the card is already face up or we have already more than 1 non-match card face up, just ignore the rest of the function
-	if (faceUpCards.length < 2 && !card.classList.contains("open") && !card.classList.contains("show") && !card.classList.contains("match")) {
-		turnFaceUp(card);
-		if (faceUpCards.length === 2) match(faceUpCards[0], faceUpCards[1]);
-	}
+    let card = ev.target.closest("li"); // the card that was clicked
+    // if either the card is already face up or we have already more than 1 non-match card face up, just ignore the rest of the function
+    if (faceUpCards.length < 2 && !card.classList.contains("open") && !card.classList.contains("show") && !card.classList.contains("match")) {
+        turnFaceUp(card);
+        if (faceUpCards.length === 2) match(faceUpCards[0], faceUpCards[1]);
+    }
 })
 
 function turnFaceUp(card) {
-	card.classList.add("show", "open");
-	faceUpCards.push(card);
+    card.classList.add("show", "open");
+    faceUpCards.push(card);
 }
 
 function turnFaceDown(card) {
-	card.classList.remove("show", "open");
+    card.classList.remove("show", "open");
 }
 
 function match(card1, card2) {
-	incrementMoves();
-	if (card1.innerHTML === card2.innerHTML) {
-		addMatch(card1);
-		addMatch(card2);
-	}
-	faceUpCards.splice(0);
-	setTimeout(function turnEverythingFaceDown(includeMatch) {
-		for (let i=0; i<cards.length; i++) {
-			let card = cards[i];
-			if (includeMatch || !card.classList.contains("match")) {
-				turnFaceDown(card);
-			}
-		}
-	}, 1000);
+    incrementMoves();
+    if (card1.innerHTML === card2.innerHTML) {
+        addMatch(card1);
+        addMatch(card2);
+    }
+    faceUpCards.splice(0);
+    setTimeout(function turnEverythingFaceDown(includeMatch) {
+        for (let i = 0; i < cards.length; i++) {
+            let card = cards[i];
+            if (includeMatch || !card.classList.contains("match")) {
+                turnFaceDown(card);
+            }
+        }
+    }, 1000);
 }
 
 function addMatch(card) {
-	turnFaceDown(card);
-	card.classList.add("match");
+    turnFaceDown(card);
+    card.classList.add("match");
 }
 
 /*
@@ -99,5 +99,5 @@ function addMatch(card) {
 let restart = document.querySelector(".restart");
 
 restart.addEventListener("click", function() {
-	location.reload();
+    location.reload();
 })
