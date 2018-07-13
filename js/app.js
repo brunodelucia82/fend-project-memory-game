@@ -71,7 +71,6 @@ function match(card1, card2) {
         addMatch(card1);
         addMatch(card2);
     }
-    faceUpCards.splice(0);
     setTimeout(function turnEverythingFaceDown(includeMatch) {
         for (let i = 0; i < cards.length; i++) {
             let card = cards[i];
@@ -79,6 +78,7 @@ function match(card1, card2) {
                 turnFaceDown(card);
             }
         }
+        faceUpCards.splice(0);
     }, 1000);
 }
 
