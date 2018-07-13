@@ -3,7 +3,7 @@
  */
 let deck = document.querySelector(".deck");
 let cards = deck.getElementsByClassName("card");
-	
+let cardsArray = [].slice.call(cards, 0)
 
 /*
  * Display the cards on the page
@@ -14,18 +14,27 @@ let cards = deck.getElementsByClassName("card");
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
+    let currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
+        currentIndex--;
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
+
+let shuffledCardsArray = shuffle(cardsArray);
+
+(function appendShuffledCards(){
+    deck.classList.add("hidden");
+    deck.innerHTML = "";
+    for (let i = 0; i < shuffledCardsArray.length; i++) {
+        deck.appendChild(shuffledCardsArray[i]);
+    }
+    deck.classList.remove("hidden");
+})()
 
 let faceUpCards = [];
 let moves = 0;
