@@ -41,10 +41,19 @@ let shuffledCardsArray = shuffle(cardsArray);
 let faceUpCards = [];
 let moves = 0;
 
+function removeOneStar() {
+    let stars = document.querySelector("ul.stars");
+    let star = stars.querySelector("li");
+    stars.removeChild(star);
+}
+
 function incrementMoves() {
     moves++;
     let span = document.querySelector(".moves");
     span.textContent = moves;
+    if(moves === 10 || moves === 20) {
+        removeOneStar();
+    }
 }
 
 deck.addEventListener("click", function(ev) {
