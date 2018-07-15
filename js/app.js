@@ -76,6 +76,8 @@ function turnFaceDown(card) {
     card.classList.remove("show", "open");
 }
 
+let initialStars = document.querySelector("ul.stars").querySelectorAll("li").length;
+
 function match(card1, card2) {
     incrementMoves();
     if (card1.innerHTML === card2.innerHTML) {
@@ -84,7 +86,10 @@ function match(card1, card2) {
         if (checkVictory() === true) {
             setTimeout(function() {
                 alert("YOU WIN!!! It took " + document.querySelector(".timer").innerText +
-                    " seconds and " + moves + " moves :D");
+                    " seconds and " + moves + " moves. You deserved " + 
+                    document.querySelector("ul.stars").querySelectorAll("li").length + " out of " + 
+                    initialStars + " stars rating. " + 
+                    "If you want to play again just click the restart button on the page.");
             }, 100);
         }
     }
