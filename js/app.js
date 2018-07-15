@@ -25,15 +25,15 @@ function shuffle(array) {
     return array;
 }
 
-let shuffledCardsArray = shuffle(cardsArray);
+cardsArray = shuffle(cardsArray);
 
 (function appendShuffledCards(){
     deck.classList.add("hidden");
     while (deck.firstChild) {
         deck.removeChild(deck.firstChild);
     }
-    for (let i = 0; i < shuffledCardsArray.length; i++) {
-        deck.appendChild(shuffledCardsArray[i]);
+    for (let i = 0; i < cardsArray.length; i++) {
+        deck.appendChild(cardsArray[i]);
     }
     deck.classList.remove("hidden");
 })()
