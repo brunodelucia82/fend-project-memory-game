@@ -4,6 +4,7 @@
 let deck = document.querySelector(".deck");
 let cards = deck.getElementsByClassName("card");
 let cardsArray = [].slice.call(cards, 0)
+let startTime, solveTime;
 
 /*
  * Display the cards on the page
@@ -57,6 +58,7 @@ function incrementMoves() {
 }
 
 deck.addEventListener("click", function(ev) {
+    if (startTime === undefined) startTime = performance.now();
     let card = ev.target.closest("li"); // the card that was clicked
     // if either the card is already face up or we have already more than 1 non-match card face up, just ignore the rest of the function
     if (faceUpCards.length < 2 && !card.classList.contains("open") && !card.classList.contains("show") && !card.classList.contains("match")) {
@@ -79,6 +81,12 @@ function match(card1, card2) {
     if (card1.innerHTML === card2.innerHTML) {
         addMatch(card1);
         addMatch(card2);
+        if (checkVictory() === true) {
+            setTimeout(function() {
+                alert("YOU WIN!!! It took " + document.querySelector(".timer").innerText +
+                    " seconds and " + moves + " moves :D");
+            }, 100);
+        }
     }
     setTimeout(function turnEverythingFaceDown(includeMatch) {
         for (let i = 0; i < cards.length; i++) {
@@ -94,6 +102,37 @@ function match(card1, card2) {
 function addMatch(card) {
     turnFaceDown(card);
     card.classList.add("match");
+}
+
+function checkVictory () {
+    for (let i = 0; i < cardsArray.length; i++) {
+        let card = cardsArray[i];
+        let classes = card.classList;
+        if (!classes.contains("match")) return false;
+    }
+    solveTime = performance.now() - startTime;
+    window.clearInterval(toggleTimer);
+    return true;
+}
+
+let timerAccuracy = 1;
+function refreshTimers() {
+        return window.setInterval(function() {
+            if (startTime !== undefined) {
+                let timers = document.getElementsByClassName("timer");
+                for (let i = 0; i < timers.length; i++) {
+                    let timer = timers[i];
+                    let currentTime = performance.now() - startTime;
+                    timer.innerHTML = roundNumber(currentTime / 1000, timerAccuracy);
+                }
+            }
+        }, 1000 / Math.pow(10, timerAccuracy))
+}
+let toggleTimer = refreshTimers();
+
+
+function roundNumber(value, decimalDigits) {
+    return (Math.round(value * Math.pow(10, decimalDigits)) / Math.pow(10, decimalDigits));
 }
 
 /*
