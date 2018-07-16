@@ -7,14 +7,16 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+To start playing open the index.html file.
 
-To get started, open `js/app.js` and start building out the app's functionality
+You'll see 16 cards on the table. Each card has a symbol. For each card there's another identical card on the table, i.e. there are 8 pairs of cards on the table. At the beginning of the game all cards will lay face-down on the table. Click any card to turn it over. Turn over cards two at a time, if the two cards match each other they will stay face-up on the table and change color, otherwise they'll automatically be turned face down after one second.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+On the top of the page there is a timer, a moves counter, a star rating and a restart button. The timer will automatically start as soon as the first card is clicked and will only stop once all the 16 cards have been turned face-up. The initial star rating is 3, you will lose one star every 10 attempts but the rating will never go below 1 star. You can abort the game and start a new one any time by clicking the restart button, i.e. the icon with the circular arrow on the top right corner.
+
+The game finishes once all of the 8 pairs of cards have been successfully revealed. You'll be shown a congratulations message with your results.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository is a project from the Udacity Front-End Web Developer Nanodegree Program. It's the final project of the Nanodegree's part 2 of 5, therefore it will not be open for contributions until it's successfully reviewed and approved by the mentors.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
