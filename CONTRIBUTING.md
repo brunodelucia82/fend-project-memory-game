@@ -1,3 +1,3 @@
 # How to contribute
 
-The files in this repository are used as the starting point for all students. Because we want students to write the majority of the code themselves, pull requests (most likely) will _not_ be merged into the project.
+This repo is the final project of part 2 of 5 of the [Udacity Front-End Web Developer Nanodegree Program] (https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001). As per the exam's requirements this is an individual project, hence it won't be open for contributions until it is submitted to the mentors for the review and approved. I'll edit this file once I'm allowed to accept external contributions.
