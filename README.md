@@ -17,6 +17,6 @@ The game finishes once all of the 8 pairs of cards have been successfully reveal
 
 ## Contributing
 
-This repository is a project from the Udacity Front-End Web Developer Nanodegree Program. It's the final project of the Nanodegree's part 2 of 5, therefore it will not be open for contributions until it's successfully reviewed and approved by the mentors.
+This repository is a project from the Udacity Front-End Web Developer Nanodegree Program. This is the final project of the Nanodegree's part 2 of 5. Since the project's already been reviewed and approved by the course mentors, it is now open for contributions.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
